@@ -1,0 +1,30 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: rehman-portfolio
+    container_name: rehman_portfolio_app
+    restart: unless-stopped
+    volumes:
+      - .:/var/www
+    networks:
+      - portfolio-network
+
+  nginx:
+    image: nginx:alpine
+    container_name: rehman_nginx
+    restart: unless-stopped
+    ports:
+      - "8000:80"
+    volumes:
+      - .:/var/www
+      - ./docker/nginx/conf.d:/etc/nginx/conf.d
+    depends_on:
+      - app
+    networks:
+      - portfolio-network
+
+networks:
+  portfolio-network:
+    driver: bridge
