@@ -20,40 +20,43 @@ export default function Footer() {
     ];
 
     return (
-        <footer className="bg-[#080808] pt-20 pb-10 px-6 border-t border-white/5 relative overflow-hidden">
-            {/* Background Branding Text */}
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 text-[20vw] font-black text-white/[0.01] pointer-events-none select-none whitespace-nowrap">
-                REHMAN SHAFIQ
-            </div>
+        /* Updated Background Color to match image_775d39.png */
+        <footer className="bg-[#030712] pt-28 pb-10 px-6 relative overflow-hidden">
+            
+            {/* 1. CINEMATIC GRADIENTS */}
+            <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent"></div>
+            <div className="pointer-events-none absolute -top-24 -left-20 w-96 h-96 bg-cyan-500/[0.03] blur-[120px] rounded-full"></div>
+            <div className="pointer-events-none absolute bottom-0 -right-20 w-96 h-96 bg-purple-500/[0.03] blur-[120px] rounded-full"></div>
 
             <div className="max-w-7xl mx-auto relative z-10">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-24">
                     
-                    {/* Col 1: Brand Intro */}
+                    {/* Brand Identity */}
                     <div className="lg:col-span-2">
-                        <Link href="/" className="group flex items-center gap-2 mb-6">
-                            <div className="w-8 h-8 bg-cyan-500 rounded-full flex items-center justify-center group-hover:rotate-[360deg] transition-transform duration-700">
-                                <span className="text-black font-black text-xs">RS</span>
+                        <Link href="/" className="group flex items-center gap-3 mb-8">
+                            <div className="w-10 h-10 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-xl flex items-center justify-center rotate-3 group-hover:rotate-[360deg] transition-all duration-700 shadow-[0_0_20px_rgba(6,182,212,0.3)]">
+                                <span className="text-black font-black text-sm">RS</span>
                             </div>
-                            <span className="text-white font-bold tracking-tighter text-xl uppercase">
-                                Rehman<span className="text-cyan-500">.</span>
+                            <span className="text-white font-bold tracking-tighter text-2xl uppercase italic">
+                                Rehman<span className="text-cyan-500 inline-block ml-1">.</span>
                             </span>
                         </Link>
-                        <p className="text-gray-500 max-w-sm leading-relaxed text-sm">
-                            Full-Stack Developer building high-end digital experiences with Laravel & React. Focused on performance, animations, and scalable solutions.
+                        <p className="text-slate-400 max-w-sm leading-relaxed text-base font-medium opacity-70">
+                            Crafting high-performance digital solutions with a focus on cinematic aesthetics and scalable architecture. 
                         </p>
                     </div>
 
-                    {/* Col 2: Quick Links */}
+                    {/* Navigation - Terminal Style */}
                     <div>
-                        <h4 className="text-white font-bold uppercase tracking-widest text-xs mb-8">Navigation</h4>
+                        <h4 className="text-cyan-500/50 font-mono text-[10px] uppercase tracking-[0.5em] mb-10">/Navigation</h4>
                         <ul className="space-y-4">
                             {quickLinks.map((link) => (
                                 <li key={link.name}>
                                     <a 
                                         href={link.href}
-                                        className="text-gray-500 hover:text-cyan-500 transition-colors text-sm font-medium"
+                                        className="text-slate-500 hover:text-white transition-all duration-300 text-sm font-bold uppercase tracking-widest flex items-center group"
                                     >
+                                        <span className="w-0 group-hover:w-3 h-px bg-cyan-500 mr-0 group-hover:mr-3 transition-all duration-300"></span>
                                         {link.name}
                                     </a>
                                 </li>
@@ -61,9 +64,9 @@ export default function Footer() {
                         </ul>
                     </div>
 
-                    {/* Col 3: Socials */}
+                    {/* Socials - Glass Style */}
                     <div>
-                        <h4 className="text-white font-bold uppercase tracking-widest text-xs mb-8">Social</h4>
+                        <h4 className="text-cyan-500/50 font-mono text-[10px] uppercase tracking-[0.5em] mb-10">/Connect</h4>
                         <ul className="space-y-4">
                             {socialLinks.map((link) => (
                                 <li key={link.name}>
@@ -71,9 +74,9 @@ export default function Footer() {
                                         href={link.href}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="text-gray-500 hover:text-white transition-colors text-sm font-medium flex items-center gap-2 group"
+                                        className="text-slate-500 hover:text-cyan-400 transition-all duration-300 text-sm font-bold uppercase tracking-widest flex items-center gap-3 group"
                                     >
-                                        <span className="w-1 h-1 bg-cyan-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                                        <div className="w-1.5 h-1.5 rounded-full bg-white/10 group-hover:bg-cyan-500 transition-colors"></div>
                                         {link.name}
                                     </a>
                                 </li>
@@ -82,23 +85,31 @@ export default function Footer() {
                     </div>
                 </div>
 
-                {/* Bottom Bar */}
-                <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
-                    <div className="text-gray-600 text-[10px] font-mono tracking-[0.2em] uppercase">
-                        © {currentYear} ALL RIGHTS RESERVED — MUHAMMAD REHMAN SHAFIQUE
+                {/* 2. PREMIUM BOTTOM BAR (Glass Card Effect) */}
+                <div className="pt-10 border-t border-white/[0.03] flex flex-col md:flex-row justify-between items-center gap-8 bg-white/[0.01] backdrop-blur-sm rounded-t-3xl p-8">
+                    <div className="text-slate-400 text-[10px] font-mono tracking-[0.3em] uppercase">
+                        © {currentYear} — REHMAN SHAFIQ
                     </div>
                     
                     <motion.div 
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
-                        className="flex items-center gap-2"
+                        className="flex items-center gap-4 border border-white/[0.05] px-6 py-2.5 rounded-full bg-black/40 backdrop-blur-xl shadow-inner"
                     >
-                        <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                        <span className="text-gray-500 text-[10px] font-mono uppercase tracking-widest">
-                            Available for new projects
+                        <div className="relative flex items-center justify-center">
+                            <span className="w-2 h-2 bg-cyan-500 rounded-full animate-ping absolute"></span>
+                            <span className="w-2 h-2 bg-cyan-500 rounded-full relative"></span>
+                        </div>
+                        <span className="text-slate-400 text-[9px] font-mono uppercase tracking-[0.2em] font-bold">
+                            System Status: <span className="text-cyan-400">Ready for hire</span>
                         </span>
                     </motion.div>
                 </div>
+            </div>
+
+            {/* Background Big Branding Text */}
+            <div className="absolute bottom-[-5%] left-1/2 -translate-x-1/2 text-[15vw] font-black text-white/[0.01] pointer-events-none select-none whitespace-nowrap tracking-tighter uppercase italic">
+                REHMAN SHAFIQ
             </div>
         </footer>
     );

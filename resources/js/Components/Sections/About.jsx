@@ -1,92 +1,153 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef, useState } from 'react';
+import { motion, useSpring } from 'framer-motion';
 
 export default function About() {
     const skills = [
         "React.js", "Laravel", "Inertia.js", "Tailwind CSS", 
-        "Docker", "REST APIs", "JavaScript (ES6+)", "Git/GitHub"
+        "Docker", "REST APIs", "TypeScript", "Git/GitHub"
     ];
 
     return (
-        <section id="about" className="py-32 px-6 bg-[#080808] relative overflow-hidden">
-            <div className="max-w-7xl mx-auto">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
-                    
-                    {/* Left Side: Personal Story */}
-                    <motion.div
-                        initial={{ opacity: 0, x: -50 }}
+        <section id="about" className="py-40 px-6 bg-slate-950 relative overflow-hidden">
+            {/* Background Ambient Glows (Matching Projects/Hero) */}
+            <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-cyan-500/5 blur-[120px] pointer-events-none" />
+            <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-purple-500/5 blur-[100px] pointer-events-none" />
+
+            <div className="max-w-7xl mx-auto relative z-10">
+                
+                {/* Header - Matching Projects Section Style */}
+                <header className="mb-32 flex flex-col md:flex-row md:items-end justify-between gap-10">
+                    <motion.div 
+                        initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
                     >
-                        <span className="text-cyan-500 font-mono text-sm tracking-[0.4em] uppercase block mb-6">
-                            The Profile
-                        </span>
-                        <h2 className="text-5xl md:text-7xl font-black tracking-tighter uppercase text-white mb-10">
-                            Engineering <br /> with Purpose
+                        <div className="flex items-center gap-3 mb-6">
+                            <div className="h-[1px] w-12 bg-cyan-500" />
+                            <span className="text-cyan-400 font-bold tracking-[0.4em] uppercase text-xs">The Profile</span>
+                        </div>
+                        <h2 className="text-7xl md:text-9xl font-black text-white leading-none tracking-tighter uppercase">
+                            Engineering <br /> 
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">
+                                With Purpose
+                            </span>
                         </h2>
-                        <p className="text-gray-400 text-lg leading-relaxed mb-8">
-                            I am a <span className="text-white font-medium">Full-Stack Developer</span> driven by the challenge of solving complex problems. With practical experience from <span className="text-cyan-500">NASTP</span>, I specialize in building responsive interfaces and enhancing usability through modern web workflows.
-                        </p>
-                        <p className="text-gray-400 text-lg leading-relaxed mb-12">
-                            Currently pursuing my <span className="text-white font-medium">Bachelor of Computer Science</span> at Virtual University, I focus on creating scalable, user-centric solutions that bridge the gap between high-end design and robust backend logic.
-                        </p>
-
-                        {/* Skills Tags */}
-                        <div className="flex flex-wrap gap-3">
-                            {skills.map((skill, i) => (
-                                <span key={i} className="px-5 py-2 bg-white/5 border border-white/10 rounded-full text-xs font-bold text-cyan-500/80 uppercase tracking-widest">
-                                    {skill}
-                                </span>
-                            ))}
-                        </div>
                     </motion.div>
+                    <p className="text-slate-400 text-lg max-w-xs md:text-right font-medium leading-relaxed">
+                        Bridging the gap between <span className="text-cyan-400">complex logic</span> and <span className="text-purple-400">seamless UI</span>.
+                    </p>
+                </header>
 
-                    {/* Right Side: Education & Experience Timeline */}
-                    <motion.div
-                        initial={{ opacity: 0, x: 50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8 }}
-                        className="space-y-12"
-                    >
-                        {/* Education Item */}
-                        <div className="relative pl-8 border-l border-white/10 group">
-                            <div className="absolute left-[-5px] top-0 w-[10px] h-[10px] bg-cyan-500 rounded-full group-hover:scale-150 transition-transform shadow-[0_0_15px_rgba(6,182,212,0.5)]" />
-                            <span className="text-xs font-mono text-gray-500 uppercase tracking-[0.2em]">2025 — Present</span>
-                            <h3 className="text-2xl font-bold text-white mt-2">BS Computer Science</h3>
-                            <p className="text-cyan-500 text-sm font-medium mb-4">Virtual University</p>
-                            <p className="text-gray-500 text-sm leading-relaxed">
-                                Building a strong foundation in programming, software development, and analytical problem-solving.
-                            </p>
-                        </div>
-
-                        {/* Experience Item */}
-                        <div className="relative pl-8 border-l border-white/10 group">
-                            <div className="absolute left-[-5px] top-0 w-[10px] h-[10px] bg-white/20 rounded-full group-hover:bg-cyan-500 group-hover:scale-150 transition-all shadow-[0_0_15px_rgba(6,182,212,0.5)]" />
-                            <span className="text-xs font-mono text-gray-500 uppercase tracking-[0.2em]">2021 — 2023</span>
-                            <h3 className="text-2xl font-bold text-white mt-2">ICS (Physics)</h3>
-                            <p className="text-cyan-500 text-sm font-medium mb-4">The Quest College</p>
-                            <p className="text-gray-500 text-sm leading-relaxed">
-                                Developed analytical thinking and fundamentals in mathematics, computing, and Physics.
-                            </p>
-                        </div>
-
-                        {/* Interactive Stats */}
-                        <div className="grid grid-cols-2 gap-6 pt-10">
-                            <div className="p-6 bg-white/5 rounded-2xl border border-white/5 group hover:border-cyan-500/30 transition-colors">
-                                <h4 className="text-4xl font-black text-white group-hover:text-cyan-500 transition-colors">03+</h4>
-                                <p className="text-gray-500 text-xs uppercase tracking-widest mt-2">Months Internship</p>
+                {/* Bento Grid with Magnetic & Spotlight Effects */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    {/* Big Bio Card */}
+                    <AboutCard className="md:col-span-2">
+                        <div className="flex flex-col h-full justify-between">
+                            <div>
+                                <h3 className="text-3xl font-black text-white mb-6 tracking-tighter group-hover:text-cyan-400 transition-colors">
+                                    Full-Stack Developer
+                                </h3>
+                                <p className="text-slate-400 text-xl leading-relaxed max-w-2xl mb-8">
+                                    I specialize in building <span className="text-white font-bold underline decoration-cyan-500/30">modern monoliths</span> using Laravel and React. With experience at <span className="text-cyan-400">NASTP Cyber Koza</span>, I focus on creating high-performance solutions that solve real-world problems.
+                                </p>
                             </div>
-                            <div className="p-6 bg-white/5 rounded-2xl border border-white/5 group hover:border-cyan-500/30 transition-colors">
-                                <h4 className="text-4xl font-black text-white group-hover:text-cyan-500 transition-colors">05+</h4>
-                                <p className="text-gray-500 text-xs uppercase tracking-widest mt-2">Projects Delivered</p>
+                            <div className="flex flex-wrap gap-2">
+                                {skills.map((skill) => (
+                                    <span key={skill} className="text-[10px] px-4 py-1.5 bg-slate-950/50 border border-cyan-500/20 rounded-xl text-cyan-100/60 uppercase tracking-widest group-hover:border-cyan-500/40">
+                                        {skill}
+                                    </span>
+                                ))}
                             </div>
                         </div>
-                    </motion.div>
+                    </AboutCard>
+
+                    {/* Education Timeline Card */}
+                    <AboutCard>
+                        <h3 className="text-xs font-bold text-cyan-500 uppercase tracking-[0.3em] mb-10">Education</h3>
+                        <div className="space-y-12">
+                            <div className="relative pl-6 border-l border-white/5">
+                                <div className="absolute left-[-4.5px] top-0 w-2 h-2 rounded-full bg-cyan-500 shadow-[0_0_10px_#06b6d4]" />
+                                <span className="text-[10px] text-slate-500 uppercase font-bold tracking-tighter italic">2025 - Present</span>
+                                <h4 className="text-white font-bold text-lg mt-1">BSCS</h4>
+                                <p className="text-slate-500 text-xs">Virtual University</p>
+                            </div>
+                            <div className="relative pl-6 border-l border-white/5">
+                                <div className="absolute left-[-4.5px] top-0 w-2 h-2 rounded-full bg-slate-700 group-hover:bg-cyan-500/50 transition-colors" />
+                                <span className="text-[10px] text-slate-500 uppercase font-bold tracking-tighter italic">2021 - 2023</span>
+                                <h4 className="text-white font-bold text-lg mt-1">ICS (Physics)</h4>
+                                <p className="text-slate-500 text-xs text-balance">The Quest College</p>
+                            </div>
+                        </div>
+                    </AboutCard>
+
+                    {/* Stat Card 1 */}
+                    <AboutCard className="text-center flex flex-col items-center justify-center py-12">
+                        <div className="text-6xl font-black text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-cyan-400 group-hover:to-purple-400 transition-all duration-500">
+                            03+
+                        </div>
+                        <p className="text-slate-500 text-[10px] uppercase tracking-[0.3em] mt-4 font-bold">Months Internship</p>
+                    </AboutCard>
+
+                    {/* Stat Card 2 */}
+                    <AboutCard className="text-center flex flex-col items-center justify-center py-12">
+                        <div className="text-6xl font-black text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-cyan-400 group-hover:to-purple-400 transition-all duration-500">
+                            05+
+                        </div>
+                        <p className="text-slate-500 text-[10px] uppercase tracking-[0.3em] mt-4 font-bold">Live Projects</p>
+                    </AboutCard>
+
+                    {/* Magnetic Badge Card */}
+                    <AboutCard className="flex items-center justify-center overflow-hidden">
+                         <div className="flex items-center gap-4">
+                            <span className="relative flex h-3 w-3">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-3 w-3 bg-cyan-500"></span>
+                            </span>
+                            <span className="text-white text-[10px] font-bold uppercase tracking-[0.4em]">Available for Hire</span>
+                        </div>
+                    </AboutCard>
 
                 </div>
             </div>
         </section>
     );
 }
+
+// Internal Component for Reusable Magnetic Glass Card
+const AboutCard = ({ children, className = "" }) => {
+    const cardRef = useRef(null);
+    const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+    const handleMouseMove = (e) => {
+        const { left, top, width, height } = cardRef.current.getBoundingClientRect();
+        const x = e.clientX - (left + width / 2);
+        const y = e.clientY - (top + height / 2);
+        setMousePos({ x, y });
+    };
+
+    const handleMouseLeave = () => setMousePos({ x: 0, y: 0 });
+
+    const xSpring = useSpring(mousePos.x * 0.04, { stiffness: 150, damping: 20 });
+    const ySpring = useSpring(mousePos.y * 0.04, { stiffness: 150, damping: 20 });
+
+    return (
+        <motion.div
+            ref={cardRef}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            style={{ x: xSpring, y: ySpring, transformStyle: "preserve-3d" }}
+            className={`group relative bg-slate-900/20 border border-white/5 rounded-[2.5rem] p-10 overflow-hidden backdrop-blur-md transition-all duration-500 hover:border-cyan-500/40 ${className}`}
+        >
+            {/* Spotlight Effect (Matches Project Cards) */}
+            <div 
+                className="absolute inset-0 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                style={{
+                    background: `radial-gradient(350px circle at ${mousePos.x + 200}px ${mousePos.y + 200}px, rgba(6, 182, 212, 0.12), rgba(168, 85, 247, 0.04), transparent 40%)`
+                }}
+            />
+            <div className="relative z-10 h-full">{children}</div>
+        </motion.div>
+    );
+};
