@@ -69,7 +69,7 @@ export default function Navbar() {
                 {isOpen && (
                     <>
                         {/* Dark Backdrop */}
-                        <motion.div 
+                        <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
@@ -78,7 +78,7 @@ export default function Navbar() {
                         />
 
                         {/* Side Panel */}
-                        <motion.div 
+                        <motion.div
                             initial={{ x: "100%" }}
                             animate={{ x: 0 }}
                             exit={{ x: "100%" }}
@@ -86,7 +86,7 @@ export default function Navbar() {
                             className="fixed top-0 right-0 h-full w-[80%] max-w-[400px] bg-slate-950 border-l border-white/10 z-[130] pointer-events-auto p-12 flex flex-col justify-between shadow-[-20px_0_50px_rgba(0,0,0,0.5)]"
                         >
                             {/* Close Button */}
-                            <button 
+                            <button
                                 onClick={() => setIsOpen(false)}
                                 className="absolute top-8 right-8 text-slate-500 hover:text-white text-xs font-bold uppercase tracking-widest flex items-center gap-2"
                             >
@@ -118,9 +118,9 @@ export default function Navbar() {
                             <div className="border-t border-white/5 pt-10">
                                 <p className="text-slate-500 text-[10px] font-bold uppercase tracking-widest mb-4">Socials</p>
                                 <div className="flex gap-6">
-                                    <a href="#" className="text-xs text-white hover:text-cyan-500 transition-colors">GH</a>
-                                    <a href="#" className="text-xs text-white hover:text-cyan-500 transition-colors">LI</a>
-                                    <a href="#" className="text-xs text-white hover:text-cyan-500 transition-colors">TW</a>
+                                    <a href="https://github.com/rehman-shafiq" className="text-xs text-white hover:text-cyan-500 transition-colors">GH</a>
+                                    <a href="https://www.linkedin.com/in/muhammad-rehman-shafiq-241336322/" className="text-xs text-white hover:text-cyan-500 transition-colors">LI</a>
+                                    <a href="https://www.instagram.com/rehman_shafiq/" className="text-xs text-white hover:text-cyan-500 transition-colors">IN</a>
                                 </div>
                             </div>
                         </motion.div>

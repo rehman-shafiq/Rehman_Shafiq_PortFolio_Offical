@@ -7,9 +7,8 @@ export default function Footer() {
 
     const socialLinks = [
         { name: 'GitHub', href: 'https://github.com/rehman-shafiq' },
-        { name: 'LinkedIn', href: '#' },
-        { name: 'Twitter', href: '#' },
-        { name: 'Instagram', href: '#' },
+        { name: 'LinkedIn', href: 'https://www.linkedin.com/in/muhammad-rehman-shafiq-241336322/' },
+        { name: 'Instagram', href: 'https://www.instagram.com/rehman_shafiq00/' },
     ];
 
     const quickLinks = [

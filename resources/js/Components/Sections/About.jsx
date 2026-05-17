@@ -1,6 +1,82 @@
 import React, { useRef, useState } from 'react';
 import { motion, useSpring } from 'framer-motion';
 
+// 🤖 BRAND NEW: INTERACTIVE COGNITIVE CORE ROBOT (LOGIC ⇄ UI BRIDGE)
+const CognitiveBridgeRobot = () => {
+    return (
+        <div className="relative w-24 h-16 flex items-center justify-center select-none pointer-events-auto mb-3 group/bridge">
+            
+            {/* Infinite Horizontal Neural Data Streams */}
+            <div className="absolute inset-0 flex items-center justify-between pointer-events-none px-1">
+                {/* Left Terminal Glow (Logic Side) */}
+                <div className="w-2 h-2 rounded-full bg-cyan-500 blur-[3px] animate-pulse" />
+                
+                {/* Vector Linking Path */}
+                <svg className="absolute inset-x-0 w-full h-4 top-1/2 -translate-y-1/2 opacity-30 group-hover/bridge:opacity-80 transition-opacity duration-500" viewBox="0 0 100 20" fill="none">
+                    <path d="M 10,10 L 90,10" stroke="url(#neuralGradient)" strokeWidth="1.5" strokeDasharray="4 3" />
+                    {/* Animated Data Bullet */}
+                    <motion.circle 
+                        r="2.5" fill="#22d3ee" style={{ filter: 'drop-shadow(0 0 4px #06b6d4)' }}
+                        animate={{ cx: [10, 90] }}
+                        transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
+                    />
+                    <defs>
+                        <linearGradient id="neuralGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stopColor="#06b6d4" />
+                            <stop offset="100%" stopColor="#a855f7" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+
+                {/* Right Terminal Glow (UI Side) */}
+                <div className="w-2 h-2 rounded-full bg-purple-500 blur-[3px] animate-pulse" />
+            </div>
+
+            {/* Central Floating Robot Processing Unit */}
+            <motion.div
+                className="w-10 h-10 relative z-10"
+                style={{ filter: 'drop-shadow(0 0 12px rgba(6, 182, 212, 0.4))' }}
+                animate={{ y: [0, -4, 0] }}
+                transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut" }}
+            >
+                <svg viewBox="0 0 100 100" className="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="coreMetal" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stopColor="#334155" />
+                            <stop offset="100%" stopColor="#0f172a" />
+                        </linearGradient>
+                        <filter id="coreGlow">
+                            <feGaussianBlur stdDeviation="1.5" result="blur" />
+                            <feMerge>
+                                <feMergeNode in="blur" />
+                                <feMergeNode in="SourceGraphic" />
+                            </feMerge>
+                        </filter>
+                    </defs>
+
+                    {/* Cybernetic Visor Frame (Trapezoid Engineering Shape) */}
+                    <path d="M 20,25 L 80,25 L 70,75 L 30,75 Z" fill="url(#coreMetal)" stroke="#6366f1" strokeWidth="2.5" />
+
+                    {/* Left Matrix Grid Eye (Logic Processing) */}
+                    <rect x="34" y="42" width="10" height="10" rx="2" fill="#020617" stroke="#06b6d4" strokeWidth="1" />
+                    <circle cx="39" cy="47" r="2" fill="#00ff88" filter="url(#coreGlow)" />
+
+                    {/* Right Spectrum Eye (UI Layout Screen) */}
+                    <rect x="56" y="42" width="10" height="10" rx="2" fill="#020617" stroke="#a855f7" strokeWidth="1" />
+                    <motion.circle 
+                        cx="61" cy="47" r="2" fill="#a855f7" filter="url(#coreGlow)"
+                        animate={{ scale: [1, 1.3, 1] }}
+                        transition={{ duration: 1.5, repeat: Infinity }}
+                    />
+
+                    {/* Top Synapse Receiver node */}
+                    <circle cx="50" cy="25" r="3" fill="#22d3ee" filter="url(#coreGlow)" />
+                </svg>
+            </motion.div>
+        </div>
+    );
+};
+
 export default function About() {
     const skills = [
         "React.js", "Laravel", "Inertia.js", "Tailwind CSS", 
@@ -9,13 +85,12 @@ export default function About() {
 
     return (
         <section id="about" className="py-40 px-6 bg-slate-950 relative overflow-hidden">
-            {/* Background Ambient Glows (Matching Projects/Hero) */}
             <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-cyan-500/5 blur-[120px] pointer-events-none" />
             <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-purple-500/5 blur-[100px] pointer-events-none" />
 
             <div className="max-w-7xl mx-auto relative z-10">
                 
-                {/* Header - Matching Projects Section Style */}
+                {/* Header Section */}
                 <header className="mb-32 flex flex-col md:flex-row md:items-end justify-between gap-10">
                     <motion.div 
                         initial={{ opacity: 0, x: -30 }}
@@ -34,12 +109,17 @@ export default function About() {
                             </span>
                         </h2>
                     </motion.div>
-                    <p className="text-slate-400 text-lg max-w-xs md:text-right font-medium leading-relaxed">
-                        Bridging the gap between <span className="text-cyan-400">complex logic</span> and <span className="text-purple-400">seamless UI</span>.
-                    </p>
+
+                    {/* ⚡ UPDATED: Robot and Subtitle setup integrated neatly together */}
+                    <div className="flex flex-col items-center md:items-end max-w-xs w-full self-center md:self-auto gap-1">
+                        <CognitiveBridgeRobot />
+                        <p className="text-slate-400 text-sm md:text-base text-center md:text-right font-medium leading-relaxed">
+                            Bridging the gap between <span className="text-cyan-400">complex logic</span> and <span className="text-purple-400">seamless UI</span>.
+                        </p>
+                    </div>
                 </header>
 
-                {/* Bento Grid with Magnetic & Spotlight Effects */}
+                {/* Bento Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     
                     {/* Big Bio Card */}
@@ -115,7 +195,6 @@ export default function About() {
     );
 }
 
-// Internal Component for Reusable Magnetic Glass Card
 const AboutCard = ({ children, className = "" }) => {
     const cardRef = useRef(null);
     const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -140,7 +219,6 @@ const AboutCard = ({ children, className = "" }) => {
             style={{ x: xSpring, y: ySpring, transformStyle: "preserve-3d" }}
             className={`group relative bg-slate-900/20 border border-white/5 rounded-[2.5rem] p-10 overflow-hidden backdrop-blur-md transition-all duration-500 hover:border-cyan-500/40 ${className}`}
         >
-            {/* Spotlight Effect (Matches Project Cards) */}
             <div 
                 className="absolute inset-0 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                 style={{

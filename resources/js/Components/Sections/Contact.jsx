@@ -1,11 +1,90 @@
 import React, { useRef, useState } from 'react';
 import { motion, useSpring } from 'framer-motion';
 
+// 🤖 ROBOT 1: CYBER SIGNALS TRANSMITTER (FOOTER SOCIALS NODE)
+const SocialSignalsRobot = () => {
+    return (
+        <div className="relative w-12 h-12 flex items-center justify-center select-none pointer-events-none group/social-bot">
+            {/* Infinite Network Frequency Wave */}
+            <motion.div 
+                className="absolute w-16 h-16 border border-cyan-500/20 rounded-full"
+                animate={{ scale: [0.8, 1.4, 0.8], opacity: [0.3, 0.7, 0.3] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            />
+
+            {/* Micro Floating Transmitter Node */}
+            <motion.div
+                className="w-8 h-8 relative z-10"
+                style={{ filter: 'drop-shadow(0 0 10px rgba(6, 182, 212, 0.4))' }}
+                animate={{ y: [0, -3, 0] }}
+                transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+            >
+                <svg viewBox="0 0 100 100" className="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="botChassis" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stopColor="#334155" />
+                            <stop offset="100%" stopColor="#0f172a" />
+                        </linearGradient>
+                        <filter id="eyeGlow">
+                            <feGaussianBlur stdDeviation="1.5" result="blur" />
+                            <feMerge>
+                                <feMergeNode in="blur" />
+                                <feMergeNode in="SourceGraphic" />
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    <path d="M 20,45 C 20,20 80,20 80,45 L 75,70 L 25,70 Z" fill="url(#botChassis)" stroke="#06b6d4" strokeWidth="2.5" />
+                    <rect x="32" y="42" width="36" height="8" rx="4" fill="#020617" stroke="#334155" />
+                    <motion.circle 
+                        cy="46" r="2.5" fill="#22d3ee" filter="url(#eyeGlow)"
+                        animate={{ cx: [38, 62, 38] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                    />
+                    <line x1="50" y1="22" x2="50" y2="10" stroke="#a855f7" strokeWidth="2" />
+                    <circle cx="50" cy="10" r="2" fill="#a855f7" filter="url(#eyeGlow)" />
+                </svg>
+            </motion.div>
+        </div>
+    );
+};
+
+// 🤖 ROBOT 2: PACKET ROUTER DRONE (FORM DEPLOYMENT ENGINE)
+const MessageRouterRobot = () => {
+    return (
+        <div className="w-full flex flex-col items-center justify-center select-none pointer-events-none my-2 group/router">
+            <motion.div
+                className="w-10 h-10 relative"
+                style={{ filter: 'drop-shadow(0 0 12px rgba(168, 85, 247, 0.4))' }}
+                animate={{ y: [0, -4, 0] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            >
+                <svg viewBox="0 0 100 100" className="w-full h-full" fill="none">
+                    <circle cx="50" cy="50" r="18" fill="#0f172a" stroke="#a855f7" strokeWidth="2" />
+                    <polygon points="42,42 58,50 42,58" fill="#22d3ee" />
+                    <motion.circle 
+                        cx="50" cy="50" r="24" stroke="#06b6d4" strokeWidth="1" strokeDasharray="6 4"
+                        animate={{ rotate: 360 }}
+                        transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+                    />
+                </svg>
+            </motion.div>
+            {/* Real-time Dynamic Laser Sync Wire */}
+            <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-cyan-500 to-transparent mt-1 opacity-40 group-hover/router:opacity-100 transition-opacity" />
+        </div>
+    );
+};
+
 export default function Contact() {
     const contactInfo = [
         { label: "Direct Mail", value: "rshafiq5872077@gmail.com", link: "mailto:rshafiq5872077@gmail.com" },
         { label: "WhatsApp / Call", value: "+92 310 5510996", link: "tel:+923105510996" },
         { label: "Based In", value: "Rawalpindi, Pakistan", link: "https://maps.google.com" }
+    ];
+
+    const socialLinks = [
+        { name: "GitHub", url: "https://github.com/rehman-shafiq" },
+        { name: "LinkedIn", url: "https://www.linkedin.com/in/muhammad-rehman-shafiq-241336322/" },
+        { name: "Instagram", url: "https://www.instagram.com/rehman_shafiq00/" }
     ];
 
     return (
@@ -50,6 +129,8 @@ export default function Contact() {
                                     </span>
                                     <a 
                                         href={info.link}
+                                        target={info.label === "Based In" ? "_blank" : "_self"}
+                                        rel="noopener noreferrer"
                                         className="block text-2xl md:text-4xl font-bold text-white mt-2 group-hover:translate-x-3 transition-transform duration-500 flex items-center gap-4"
                                     >
                                         {info.value}
@@ -62,7 +143,7 @@ export default function Contact() {
 
                     {/* Right Side: Magnetic Glass Form */}
                     <ContactCard>
-                        <form className="space-y-8 relative z-10">
+                        <form className="space-y-6 relative z-10" onSubmit={(e) => e.preventDefault()}>
                             <div className="space-y-6">
                                 <div className="group">
                                     <label className="text-[10px] uppercase tracking-widest text-slate-500 font-black mb-2 block ml-1 group-focus-within:text-cyan-400 transition-colors">Name</label>
@@ -75,7 +156,7 @@ export default function Contact() {
                                 <div className="group">
                                     <label className="text-[10px] uppercase tracking-widest text-slate-500 font-black mb-2 block ml-1 group-focus-within:text-cyan-400 transition-colors">Email</label>
                                     <input 
-                                        type="email" 
+                                        type="type" 
                                         className="w-full bg-slate-950/50 border border-white/5 rounded-2xl px-6 py-5 text-white focus:outline-none focus:border-cyan-500/40 focus:ring-1 focus:ring-cyan-500/20 transition-all placeholder:text-slate-700"
                                         placeholder="name@email.com"
                                     />
@@ -90,7 +171,10 @@ export default function Contact() {
                                 </div>
                             </div>
 
-                            <button className="w-full py-6 bg-gradient-to-r from-cyan-500 to-cyan-600 rounded-2xl text-slate-950 font-black uppercase tracking-[0.2em] text-sm hover:scale-[1.02] active:scale-[0.98] transition-all shadow-[0_20px_40px_-15px_rgba(6,182,212,0.3)] hover:shadow-cyan-500/40">
+                            {/* Integrated Drone Right Before Deployment Action */}
+                            <MessageRouterRobot />
+
+                            <button className="w-full py-6 bg-gradient-to-r from-cyan-500 to-cyan-600 rounded-2xl text-slate-950 font-black uppercase tracking-[0.2em] text-sm hover:scale-[1.02] active:scale-[0.98] transition-all shadow-[0_20px_40px_-15px_rgba(6,182,212,0.3)] hover:shadow-cyan-500/40 cursor-pointer">
                                 Deploy Message
                             </button>
                         </form>
@@ -112,17 +196,23 @@ export default function Contact() {
                         <span className="text-[9px] text-slate-700 uppercase tracking-widest italic">Built with Laravel & React</span>
                     </div>
                     
-                    <div className="flex gap-12">
-                        {["GitHub", "LinkedIn", "Twitter"].map((social) => (
-                            <a 
-                                key={social}
-                                href="#" 
-                                className="text-[10px] font-black text-slate-500 hover:text-cyan-400 transition-colors uppercase tracking-[0.2em] relative group"
-                            >
-                                {social}
-                                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-cyan-500 group-hover:w-full transition-all duration-300"></span>
-                            </a>
-                        ))}
+                    {/* Synchronized Social Area */}
+                    <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-10">
+                        <SocialSignalsRobot />
+                        <div className="flex gap-12">
+                            {socialLinks.map((social) => (
+                                <a 
+                                    key={social.name}
+                                    href={social.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-[10px] font-black text-slate-500 hover:text-cyan-400 transition-colors uppercase tracking-[0.2em] relative group"
+                                >
+                                    {social.name}
+                                    <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-cyan-500 group-hover:w-full transition-all duration-300"></span>
+                                </a>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -130,7 +220,6 @@ export default function Contact() {
     );
 }
 
-// Reusable Magnetic Card for Contact
 const ContactCard = ({ children }) => {
     const cardRef = useRef(null);
     const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
